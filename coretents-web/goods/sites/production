@@ -1,0 +1,22 @@
+# Virtual Host configuration for www.coretents.com
+#
+server {
+
+    listen              443 ssl;
+    server_name         www.coretents.com;
+    ssl_certificate     /etc/nginx/ssl/coretents-web.crt;
+    ssl_certificate_key /etc/nginx/ssl/coretents-web.key;
+
+	root /app/src;
+
+	index index.html index.htm index.nginx-debian.html;
+
+	server_name www.coretents.com;
+
+	location / {
+		# First attempt to serve request as file, then
+		# as directory, then fall back to displaying a 404.
+		try_files $uri $uri/ =404;
+	}
+
+}
